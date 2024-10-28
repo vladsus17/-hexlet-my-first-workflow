@@ -1,9 +1,16 @@
-name: show-directory
+name: Run Say Hello
 
-on: push
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      -uses: actions/checkout@v4
-      -run: make say-hello
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Make
+        run: sudo apt-get install make
+
+      - name: Run say-hello
+        run: make say-hello
